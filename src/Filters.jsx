@@ -1,35 +1,40 @@
 import React from "react";
 import { StyleSheet, View } from 'react-native';
-import { Button } from './Button';
+import { FilterButton } from './Button';
 
 export const Filters = ({
   onFilterChange,
-  onRemoveCompleted
+  onRemoveCompleted,
+  filteredStatus,
 }) => {
   return (
     <View style={styles.btnWrapper} >
       <View style={styles.filterBlock}>
-        <Button 
-          text='All' 
-        onPress={onFilterChange}
+        <FilterButton
+          text='All'
+          onPress={onFilterChange}
+          filteredStatus={filteredStatus}
         />
-        <Button 
+        <FilterButton
           text='Completed'
           onPress={onFilterChange}
+          filteredStatus={filteredStatus}
         />
-        <Button 
+        <FilterButton
           text='Active'
           onPress={onFilterChange}
+          filteredStatus={filteredStatus}
         />
       </View>
       <View style={styles.btnRemove}>
-        <Button
+        <FilterButton
           text='Remove Completed'
           onPress={onRemoveCompleted}
+          filteredStatus={filteredStatus}
         />
       </View>
-    </View>
-    
+      
+    </View>   
   )
 }
 
@@ -40,9 +45,6 @@ const styles = StyleSheet.create({
 
   filterBlock: {
     flexDirection: 'row',
-    justifyContent: 'center',
-    gap: 20,
+    justifyContent: 'space-between',
   },
-    
-  
 })

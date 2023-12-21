@@ -4,7 +4,7 @@ import {
   StyleSheet,
   TextInput,
   Text,
-  Pressable,
+  TouchableOpacity,
   Alert,
 } from 'react-native';
 
@@ -30,12 +30,13 @@ export const AddTodo = ({
         value={value}
         placeholder='Create new todo...'
       />
-      <Pressable
-        style={styles.btn}
+      <TouchableOpacity
+        style={value ? styles.btn : styles.disabledBtn}
         onPress={pressHandler}
+        disabled={!value}
       >
         <Text style={styles.btnText}>Add</Text>
-      </Pressable>
+      </TouchableOpacity>
     </View>
   )
 }
@@ -65,5 +66,14 @@ const styles = StyleSheet.create({
 
   btnText: {
     color: '#fff',
+  },
+
+  disabledBtn: {
+    width: '20%',
+    alignItems: 'center',
+    justifyContent: 'center',
+    padding: 5,
+    borderRadius: 5,
+    backgroundColor: 'grey'
   }
 })
